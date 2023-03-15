@@ -1,0 +1,15 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+
+.bg-dark{
+  background-color: #F5DAF4 !important;
+}
+
+.fontlist{
+  font-size: 22px;
+}
+
+.navbar-expand-md{
+  justify-content: flex-end;
+}

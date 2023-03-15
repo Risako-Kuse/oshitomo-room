@@ -1,0 +1,2 @@
+class DirectmailSpace < ApplicationRecord
+end

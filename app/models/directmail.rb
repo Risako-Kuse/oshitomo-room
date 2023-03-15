@@ -1,0 +1,2 @@
+class Directmail < ApplicationRecord
+end

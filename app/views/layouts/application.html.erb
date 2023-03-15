@@ -6,11 +6,120 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <!--ヘッター-->
+    <header>
+      <nav class='navbar navbar-expand-md bg-dark'>
+        <h2 class='ml-5'>
+
+          <div class='collapse navbar-collapse flex-column order-md-last align-items-end mr-5'>
+            <ul class='nav navbar-nav ml-auto'>
+
+              <!--↓会員がログインしているとき↓-->
+              <% if customer_signed_in? %>
+                <!--HOMEボタン-->
+                <li>
+                  <%= link_to root_path, class:'nav-link text-light fontlist' do %>
+                    <i class="fas fa-home-lg-alt"></i> HOME
+                  <% end %>
+                </li>
+                <!--推し友を探すボタン-->
+                <li>
+                  <%= link_to public_customers_path, class:'nav-link text-light fontlist' do %>
+                    <i class="fas fa-user"></i> 推し友をさがす
+                  <% end %>
+                </li>
+                <!--募集をさがすボタン-->
+                <li>
+                  <%= link_to public_posts_path, class:'nav-link text-light fontlist' do %>
+                    <i class="fas fa-comment"></i> 募集をさがす
+                  <% end %>
+                </li>
+                <!--ダイレクトメールボタン-->
+                <li>
+                  <%= link_to public_directmails_path, class:'nav-link text-light fontlist' do %>
+                    <i class="fas fa-envelope"></i> ダイレクトメール
+                  <% end %>
+                </li>
+                <!--ログアウト-->
+            　   <li>
+                  <%= link_to destroy_customer_session_path, method: :delete, class:'nav-link text-light fontlist' do %>
+                    <i class="fas fa-sign-out-alt"></i> ログアウト
+                  <% end %>
+                </li>
+
+              <!--↓管理者がログインしているとき↓-->
+              <% elsif admin_signed_in? %>
+                <!--会員一覧ボタン-->
+                <li>
+                  <%= link_to admin_customers_path, class:'nav-link text-light fontlist' do %>
+                     <i class="fas fa-user"></i> 会員一覧
+                  <% end %>
+                </li>
+                <!--投稿一覧ボタン-->
+                <li>
+                  <%= link_to admin_posts_path, class:'nav-link text-light fontlist' do %>
+                     <i class="fas fa-comment"></i> 投稿一覧
+                  <% end %>
+                </li>
+                <!--ログアウト-->
+                <li>
+                  <%= link_to destroy_admin_session_path, method: :delete,class:'nav-link text-light fontlist' do%>
+                    <i class="fas fa-sign-out-alt"></i> ログアウト
+                  <% end %>
+                </li>
+
+              <!--↓ログインしていないとき↓-->
+              <% else %>
+                 <!--HOMEボタン-->
+                <li>
+                  <%= link_to root_path, class:'nav-link text-light fontlist' do %>
+                    <i class="fas fa-home"></i> HOME
+                  <% end %>
+                </li>
+                <!--推し友ROOMについてボタン-->
+                <li>
+                  <%= link_to public_about_path, class:'nav-link text-light fontlist' do %>
+                    <i class="fas fa-heart"></i> 推し友ROOMについて
+                  <%end%>
+                </li>
+                <!--新規会員登録ボタン-->
+                <li>
+                  <%= link_to new_customer_registration_path, class:'nav-link text-light fontlist' do %>
+                    <i class="fas fa-user-plus"></i> 新規登録
+                  <% end %>
+                </li>
+                <!--ログインボタン-->
+                <li>
+                  <%= link_to new_customer_session_path, class:'nav-link text-light fontlist' do %>
+                    <i class="fas fa-sign-in-alt"></i> ログイン
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+        </div>
+      </nav>
+    </header>
+
+
+    <!--メイン-->
+    <main>
     <%= yield %>
+    </main>
+
+
+    <!--フッター-->
+    <footer class='fixed-bottom'>
+      <div class='bg-dark p-auto py-4 text-white text-center'>
+        <p>推し友ROOM</p>
+      </div>
+    </footer>
+
+    </footer>
+
   </body>
 </html>
