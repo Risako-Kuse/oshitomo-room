@@ -1,2 +1,47 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+    <h2>♥ 会員情報変更 ♥</h2>
+      
+      <%= form_with model: @customer, url: public_customer_path(@customer.id) do |f| %>
+
+      <div class="form-group">
+      <p>Name</p>
+      <%= f.text_field :name %>
+      </div>
+
+      <div class="form-group">
+      <p>Image</p>
+      <%= f.file_field :image, accept: "image/*" %>
+      </div>
+
+      <div class="form-group">
+      <p>Address</p>
+      <%= f.text_field :address %>
+      </div>
+
+      <div class="form-group">
+      <p>Age</p>
+      <%= f.text_field :age %>
+      </div>
+
+      <div class="form-group">
+      <p>推し(グループ・メンバー名)</p>
+      <%= f.text_field :oshi_name %>
+      </div>
+
+      <div class="form-group">
+      <p>自己紹介</p>
+      <%= f.text_area :introduction %>
+      </div>
+
+      <td><%= f.submit "会員情報更新", class: 'btn btn-secondary' %></td>
+
+      <td><%= link_to "退会する", public_customers_withdrawal_check_path, class:'btn btn-danger mb-2' %></td>
+
+      <% end %>
+
+  </div>
+ </div>
+</div>
