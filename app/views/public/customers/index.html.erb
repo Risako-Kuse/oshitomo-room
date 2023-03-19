@@ -7,7 +7,7 @@
      <% if current_customer.image.attached? %>
        <%= image_tag current_customer.get_image(100,100) %>
   　 <% else %>
-       <%= image_tag 'no_image', size: "100x100" %>
+       <%= image_tag 'no_image.jpg', size: "100x100" %>
      <% end %>
 
      <table class="table">
@@ -88,7 +88,7 @@
          <td><% if current_customer.image.attached? %>
                <%= image_tag current_customer.get_image(100,100) %>
   　          <% else %>
-               <%= image_tag 'no_image', size: "100x100" %>
+               <%= image_tag 'no_image.jpg', size: "100x100" %>
              <% end %></td>
          <td><%= customer.name %></td>
          <td><%= link_to "Show", public_customer_path(customer.id) %></td>
