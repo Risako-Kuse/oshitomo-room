@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   }
   root :to => "public/homes#top"
   namespace :public do
+    get 'customers/withdrawal_check'
+    patch 'customers/withdrawal'
     resources :directmails, only: [:new, :index, :show, :create]
     resources :posts
     resources :customers, only: [:index, :show, :edit, :update]
-    get 'customers/withdrawal_check'
-    patch 'customers/withdrawal'
     get "/about" => "homes#about"
   end
 

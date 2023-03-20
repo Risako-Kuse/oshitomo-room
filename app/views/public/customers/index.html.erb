@@ -47,7 +47,7 @@
 
 
     <h2 class="mt-3">♥ New Post ♥</h2>
-     <%= form_with model: @Post do |f| %>
+     <%= form_with model: @post, url: public_posts_path do |f| %>
 
      <div class="form-group">
       <p>推し（推しグループ・メンバー名）</p>

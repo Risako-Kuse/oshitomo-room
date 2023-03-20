@@ -1,2 +1,38 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<!--About Me の部分テンプレート-->
+<%= render 'public/customers/about_me', costomer: @post %>
+
+<!--画面右側の Posts の部分の記述↓-->
+   <div class="col-md-8 offset-md-1">
+     <h2>♥ Post Detail ♥</h2>
+
+    <table class="table table-hover table-inverse">
+
+       <tr>
+         <td>
+           <%= link_to public_customer_path(@posts.customer.id) do%>
+             <% if current_customer.image.attached? %>
+               <%= image_tag current_customer.get_image(100,100) %>
+  　          <% else %>
+               <%= image_tag 'no_image.jpg', size: "100x100" %>
+             <% end %>
+           <%end%>
+         <td>
+           <%= @posts.oshi_name %>
+          </td>
+         <td>
+           <%= link_to @posts.post_name, public_customer_path(@posts.customer.id) %>
+         </td>
+         <td>
+           <%= @posts.post_content %>
+         </td>
+
+         <% if @customer.id == current_customer.id %>
+         <td><%= link_to "Edit", edit_public_post_path(@posts.id), class: 'btn btn-sm btn-success edit_book_58920' %></td>
+         <td><%= link_to 'Destroy', public_post_path(@posts.id), method: :delete,  class: 'btn btn-sm btn-danger destroy_book_58920', "data-confirm" => "本当に消しますか？"%></td>
+         <%end%>
+       </tr>
+    </table>
+   </div>
+
+ </div>
+ </div>

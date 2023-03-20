@@ -27,9 +27,14 @@
            <%end%>
          </td>
          <td>
-          <%= link_to post.post_name public_customer_path(post.customer.id) %>
+           <%= post.oshi_name %>
           </td>
-         <td><%= post.post_content %></td>
+         <td>
+          <%= link_to post.post_name, public_customer_path(post.customer.id) %>
+          </td>
+         <td>
+           <%= post.post_content %>
+         </td>
        </tr>
        <%end%>
       </tbody>

@@ -1,2 +1,33 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+      <h1>♥ 投稿編集 ♥</h1>
+
+      <%= form_with model: @post, url: public_post_path(@post.id) do |f| %>
+
+  　　<div class="form-group">
+      <P>推し</P>
+      <%= f.text_field :oshi_name %>
+      </div>
+
+      <div class="form-group">
+      <P>募集名</P>
+      <%= f.text_field :post_name %>
+      </div>
+
+      <div class="form-group">
+      <P>募集内容</p>
+      <%= f.text_area :post_content %>
+      </div>
+
+
+      <%= f.submit "編集保存", class: 'btn btn-success' %>
+
+      <% end %>
+
+      <%= link_to "Show", public_post_path(@post.id) %> | <%= link_to "Back", public_posts_path %>
+
+    </div>
+  </div>
+</div>

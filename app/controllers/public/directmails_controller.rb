@@ -1,4 +1,4 @@
-class Public::DirectmailController < ApplicationController
+class Public::DirectmailsController < ApplicationController
   def new
   end
 

@@ -1,2 +1,46 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<!--About Me の部分テンプレート-->
+<%= render 'public/customers/about_me', costomer: @post %>
+
+<!--画面右側の Posts の部分の記述↓-->
+
+<div class="col-md-8 offset-md-1">
+     <h2>♥ Everyone's Posts ♥</h2>
+
+    <table class="table table-hover table-inverse">
+      <thead>
+       <tr>
+        <th></th>
+        <th>推し</th>
+        <th>募集名</th>
+        <th>募集内容</th>
+       </tr>
+       </thead>
+
+
+       <tbody>
+       <% @posts.each do |post| %>
+       <tr>
+         <td>
+           <%= link_to public_customer_path(post.customer.id) do%>
+             <% if current_customer.image.attached? %>
+               <%= image_tag current_customer.get_image(100,100) %>
+  　          <% else %>
+               <%= image_tag 'no_image.jpg', size: "100x100" %>
+             <% end %>
+           <%end%>
+         </td>
+         <td>
+           <%= post.oshi_name %>
+         </td>
+         <td>
+           <%= link_to post.post_name, public_post_path(post.customer.id) %>
+         </td>
+         <td>
+           <%= post.post_content %>
+         </td>
+       </tr>
+       <%end%>
+       </tbody>
+
+    </table>
+  </div>
