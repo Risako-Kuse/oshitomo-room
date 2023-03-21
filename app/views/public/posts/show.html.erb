@@ -1,5 +1,5 @@
 <!--About Me の部分テンプレート-->
-<%= render 'public/customers/about_me', costomer: @post %>
+<%= render 'public/customers/about_me', customer: @customer %>
 
 <!--画面右側の Posts の部分の記述↓-->
    <div class="col-md-8 offset-md-1">
@@ -10,8 +10,8 @@
        <tr>
          <td>
            <%= link_to public_customer_path(@posts.customer.id) do%>
-             <% if current_customer.image.attached? %>
-               <%= image_tag current_customer.get_image(100,100) %>
+             <% if @customer.image.attached? %>
+               <%= image_tag @customer.get_image(100,100) %>
   　          <% else %>
                <%= image_tag 'no_image.jpg', size: "100x100" %>
              <% end %>
@@ -25,11 +25,16 @@
          <td>
            <%= @posts.post_content %>
          </td>
+         <!--イイねの部分テンプレート-->
+         <td>
+           <%= render "public/favorites/favorite", post: post %>
+         </td>
 
          <% if @customer.id == current_customer.id %>
          <td><%= link_to "Edit", edit_public_post_path(@posts.id), class: 'btn btn-sm btn-success edit_book_58920' %></td>
          <td><%= link_to 'Destroy', public_post_path(@posts.id), method: :delete,  class: 'btn btn-sm btn-danger destroy_book_58920', "data-confirm" => "本当に消しますか？"%></td>
          <%end%>
+         
        </tr>
     </table>
    </div>

@@ -4,8 +4,8 @@
 
     <h2>♥ About Me ♥</h2>
 
-     <% if current_customer.image.attached? %>
-       <%= image_tag current_customer.get_image(100,100) %>
+     <% if customer.image.attached? %>
+       <%= image_tag customer.get_image(100,100) %>
   　 <% else %>
        <%= image_tag 'no_image.jpg', size: "100x100" %>
      <% end %>
@@ -15,33 +15,33 @@
 
         <tr>
          <th>♥ Name</th>
-         <th><%= current_customer.name %></th>
+         <th><%= customer.name %></th>
         </tr>
 
         <tr>
          <th>♥ Address</th>
-         <th><%= current_customer.address %></th>
+         <th><%= customer.address %></th>
         </tr>
 
         <tr>
          <th>♥ Age</th>
-         <th><%= current_customer.age %></th>
+         <th><%= customer.age %></th>
         </tr>
 
         <tr>
          <th>♥ 推し(推しグループ・メンバー) ♥</th>
-         <th><%= current_customer.oshi_name %></th>
+         <th><%= customer.oshi_name %></th>
         </tr>
 
         <tr>
          <th>♥ 自己紹介 ♥</th>
-         <th><%= current_customer.introduction %></th>
+         <th><%= customer.introduction %></th>
         </tr>
 
       </tbody>
      </table>
 
-     <%= link_to edit_public_customer_path(current_customer.id), class:'btn btn-outline-secondary btn-block edit_user_77129' do%>
+     <%= link_to edit_public_customer_path(customer.id), class:'btn btn-outline-secondary btn-block edit_user_77129' do%>
       会員情報編集
       <%end%>
 

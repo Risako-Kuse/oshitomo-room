@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -13,6 +14,13 @@ Rails.application.routes.draw do
     resources :posts
     resources :customers, only: [:index, :show, :edit, :update]
     get "/about" => "homes#about"
+    resource :favorites, only: [:create, :destroy] #イイね機能
+
+    # ↓ コメント機能
+    resources :post, only: [:new, :create, :index, :show, :destroy] do
+      resources :post_comments, only: [:create]
+    end
+
   end
 
 

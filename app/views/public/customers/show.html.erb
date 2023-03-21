@@ -1,5 +1,5 @@
 <!--About Meの部分テンプレート-->
-<%= render 'public/customers/about_me', costomer: @posts %>
+<%= render 'public/customers/about_me', customer: @customer %>
 
 <div class="col-md-8 offset-md-1">
      <h2>♥ My Post ♥</h2>
@@ -19,8 +19,8 @@
        <tr>
          <td>
            <%= link_to public_customer_path(post.customer.id) do%>
-           <% if current_customer.image.attached? %>
-             <%= image_tag current_customer.get_image(100,100) %>
+           <% if post.customer.image.attached? %>
+             <%= image_tag post.customer.get_image(100,100) %>
   　        <% else %>
              <%= image_tag 'no_image.jpg', size: "100x100" %>
            <% end %>
@@ -30,7 +30,7 @@
            <%= post.oshi_name %>
           </td>
          <td>
-          <%= link_to post.post_name, public_customer_path(post.customer.id) %>
+          <%= link_to post.post_name, public_post_path(post.id) %>
           </td>
          <td>
            <%= post.post_content %>

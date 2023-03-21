@@ -27,6 +27,13 @@
                     <i class="fas fa-home"></i> HOME
                   <% end %>
                 </li>
+                <!--マイページボタン-->
+                <li>
+                  <%= link_to public_customer_path(current_customer.id), class:'nav-link text-light fontlist' do %>
+                    <i class="fas fa-heart"></i> マイページ
+                  <% end %>
+                </li>
+
                 <!--推し友を探すボタン-->
                 <li>
                   <%= link_to public_customers_path, class:'nav-link text-light fontlist' do %>

@@ -85,8 +85,8 @@
       <tbody>
         <% @customers.each do |customer| %>
        <tr>
-         <td><% if current_customer.image.attached? %>
-               <%= image_tag current_customer.get_image(100,100) %>
+         <td><% if customer.image.attached? %>
+               <%= image_tag customer.get_image(100,100) %>
   　          <% else %>
                <%= image_tag 'no_image.jpg', size: "100x100" %>
              <% end %></td>

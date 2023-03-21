@@ -13,6 +13,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
+    @customer = current_customer
     @post = Post.new
     @posts = Post.all
   end
