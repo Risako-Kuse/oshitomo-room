@@ -1,0 +1,36 @@
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @records.each do |customer| %>
+      <tr>
+        <td>
+          <% if customer.image.attached? %>
+              <%= image_tag customer.get_image(100,100) %>
+  　       <% else %>
+              <%= image_tag 'no_image.jpg', size: "100x100" %>
+          <% end %>
+        </td>
+        <td>
+          <%= customer.name %>
+        </td>
+        <td>
+          <% if current_customer.following?(customer) %>
+            <%= link_to "フォロー外す", public_customer_relationships_path(customer.id), method: :delete %>
+          <% else %>
+            <%= link_to "フォローする", public_customer_relationships_path(customer.id), method: :post %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "Show", public_customer_path(customer.id) %>
+        </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>

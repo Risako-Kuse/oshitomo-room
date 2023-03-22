@@ -19,9 +19,9 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.new
-    @posts = Post.find(params[:id])
-    @customer = @posts.customer
+    @post = Post.find(params[:id])
+    @customer = @post.customer
+    @post_comment = PostComment.new
   end
 
   def edit

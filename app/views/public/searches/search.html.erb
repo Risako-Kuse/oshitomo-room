@@ -1,0 +1,13 @@
+<!--About Me の部分テンプレート-->
+<%= render 'public/customers/about_me', customer: @customer %>
+
+<div class="col-md-8 offset-md-1">
+  <!-- 検索結果 -->
+  <% if @model == 'customer' %>
+  	<h2>♥ 推し友ユーザー ♥</h2>
+    <%= render 'public/customers/index', customers: @records %>
+  <% elsif @model == 'post' %>
+  	<h2>♥ Everyone's Posts ♥</h2>
+    <%= render 'public/posts/index', posts: @records %>
+  <% end %>
+</div>

@@ -13,6 +13,7 @@
         <th>推し</th>
         <th>募集名</th>
         <th>募集内容</th>
+        <th>いいね数</th>
        </tr>
        </thead>
 
@@ -42,6 +43,7 @@
          <!--イイねの部分テンプレート-->
          <td>
            <%= render "public/favorites/favorite", post: post %>
+           <div><%= link_to post.post_comments.count.to_s + 'コメント', public_post_path(post.id) %></div>
          </td>
         </tr>
        <%end%>

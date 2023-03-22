@@ -38,6 +38,17 @@
          <th><%= current_customer.introduction %></th>
         </tr>
 
+        <tr>
+         <th>follows</th>
+         <th><%= link_to current_customer.followings.count, public_customer_followings_path(current_customer.id) %></th>
+        </tr>
+
+        <tr>
+         <th>followers</th>
+         <th><%= link_to current_customer.followers.count, public_customer_followers_path(current_customer.id) %></th>
+        </tr>
+
+
       </tbody>
      </table>
 
@@ -80,6 +91,7 @@
         <th>image</th>
         <th>name</th>
         <th></th>
+        <th></th>
        </tr>
       </thead>
       <tbody>
@@ -91,6 +103,13 @@
                <%= image_tag 'no_image.jpg', size: "100x100" %>
              <% end %></td>
          <td><%= customer.name %></td>
+         <td>
+          <% if current_customer.following?(customer) %>
+            <%= link_to "フォロー外す", public_customer_relationships_path(customer.id), method: :delete %>
+          <% else %>
+            <%= link_to "フォローする", public_customer_relationships_path(customer.id), method: :post %>
+          <% end %>
+         </td>
          <td><%= link_to "Show", public_customer_path(customer.id) %></td>
        </tr>
        <%end%>

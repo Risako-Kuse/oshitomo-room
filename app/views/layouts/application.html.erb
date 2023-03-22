@@ -15,9 +15,8 @@
     <header>
       <nav class='navbar navbar-expand-md bg-dark'>
         <h2 class='ml-5'>
-
-          <div class='collapse navbar-collapse flex-column order-md-last align-items-end mr-5'>
-            <ul class='nav navbar-nav ml-auto'>
+        <div class='collapse navbar-collapse flex-column order-md-last align-items-end mr-5'>
+          <ul class='nav navbar-nav ml-auto'>
 
               <!--↓会員がログインしているとき↓-->
               <% if customer_signed_in? %>
@@ -110,6 +109,21 @@
             </ul>
         </div>
       </nav>
+      <div class="container px-5 px-sm-0" style="margin-top: 20px; margin-bottom: 20px;">
+        <div class="row">
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-8 offset-md-1">
+            <% if customer_signed_in? %>
+              <%= form_with url: public_search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :content %>
+                <%= f.select :model, options_for_select({ "推し友をさがす" => "customer", "募集をさがす" => "post" }) %>
+                <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+                <%= f.submit '検索' %>
+               <% end %>
+            <% end %>
+          </div>
+        </div>
     </header>
 
 

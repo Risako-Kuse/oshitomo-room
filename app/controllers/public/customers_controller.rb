@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  
+
   # ↓新規投稿機能
   def create
      # １.&2. データを受け取り新規登録するためのインスタンス作成
@@ -11,7 +11,7 @@ class Public::CustomersController < ApplicationController
     # 4. トップ画面へリダイレクト
     redirect_to public_posts_path(@post)
   end
-  
+
   def index
     @customers = Customer.all
     @post = Post.new
@@ -33,10 +33,22 @@ class Public::CustomersController < ApplicationController
     redirect_to public_customers_path
   end
 
+  # フォロー一覧
+  def followings
+    customer = Customer.find(params[:customer_id])
+    @followings = customer.relationships
+  end
+
+  # フォロワー一覧
+  def followers
+    customer = Customer.find(params[:customer_id])
+    @followers = customer.reverse_of_relationships
+  end
+
   def withdrawal
   end
 
-  
+
   private
   # ストロングパラメーター
   def customer_params
