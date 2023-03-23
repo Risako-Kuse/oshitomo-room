@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <h2><%= @customer.name %>さんの投稿一覧</h2>
+
+              <table class="table table-hover table-inverse">
+                <thead>
+                  <tr>
+                    <th>推し</th>
+                    <th>募集名</th>
+                    <th>募集内容</th>
+                    <th></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <% @posts.each do |post| %>
+                    <tr>
+                      <td>
+                        <%= post.oshi_name %>
+                      </td>
+                      <td>
+                        <%= post.post_name %>
+                      </td>
+                      <td>
+                        <%= post.post_content %>
+                      </td>
+                      <td>
+                        <%= link_to 'Destroy', admin_post_path(post.id), method: :delete,  class: 'btn btn-sm btn-danger destroy_book_58920', "data-confirm" => "本当に消しますか？"%></td>
+                      </td>
+                    </tr>
+                  <%end%>
+                </tbody>
+              </table>
+
+          <%= link_to '会員一覧ページに戻る', admin_customers_path %>
+
+        </div>
+    </div>
+</div>

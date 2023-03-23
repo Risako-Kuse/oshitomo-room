@@ -13,7 +13,8 @@ class Public::CustomersController < ApplicationController
   end
 
   def index
-    @customers = Customer.all
+    # ↓ 会員のユーザー情報だけ取ってくる
+    @customers = Customer.where(is_deleted: false)
     @post = Post.new
   end
 
@@ -45,7 +46,15 @@ class Public::CustomersController < ApplicationController
     @followers = customer.reverse_of_relationships
   end
 
+  # 退会
   def withdrawal
+    @customer = current_customer
+    if @customer.update(is_deleted: true, email: 'deleted_customer_'+@customer.id.to_s+@customer.email)
+                        # ↑ is_deleted: true, だけだと一度退会したら同じアドレスでは入会できない。 email: 'deleted_customer_'+@customer.id.to_s+@customer.emailを付けることで再入会可能にする。
+      reset_session
+      flash[:notice] = "ながのCAKEを退会しました"
+      redirect_to root_path
+    end
   end
 
 

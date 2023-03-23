@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       get 'relationships' => 'customers#followings', as: 'followings'
       get 'reverse_of_relationships' => 'customers#followers', as: 'followers'
     end
-    
+
     get "/search" => "searches#search"
   end
 
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     resources :posts, only: [:index, :destroy]
-    resources :customers, only: [:index, :destroy]
+    resources :customers, only: [:index, :show, :destroy]
     get 'homes/top'
   end
 

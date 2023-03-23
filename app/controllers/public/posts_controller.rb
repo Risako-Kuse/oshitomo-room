@@ -2,7 +2,7 @@ class Public::PostsController < ApplicationController
 
   # ↓新規投稿機能
   def create
-     # １.&2. データを受け取り新規登録するためのインスタンス作成
+    # １.&2. データを受け取り新規登録するためのインスタンス作成
     @post = Post.new(post_params)
     # UserIDを取り出す
     @post.customer_id = current_customer.id
@@ -15,7 +15,8 @@ class Public::PostsController < ApplicationController
   def index
     @customer = current_customer
     @post = Post.new
-    @posts = Post.all
+    # ↓ 退会してない会員の投稿だけ取ってくる
+    @posts = Post.joins(:customer).where(customer: { is_deleted: false })
   end
 
   def show
