@@ -2,19 +2,31 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 
-.bg-dark{
+nav.navbar {
   background-color: #F5DAF4 !important;
 }
+
+a.navbar-brand {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+a.navbar-brand:hover {
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
 
 .fontlist{
   font-size: 22px;
 }
 
-.navbar-expand-md{
-  justify-content: flex-end;
+footer {
+  background-color: #F5DAF4 !important;
 }
 
-/**/
+.footer-text-color {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
 main {
   padding-bottom: 100px;
 }
