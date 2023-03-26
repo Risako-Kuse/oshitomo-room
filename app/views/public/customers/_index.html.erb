@@ -8,9 +8,10 @@
     </tr>
   </thead>
   <tbody>
-    <% @records.each do |customer| %>
+    <% customers.each do |customer| %>
       <tr>
         <td>
+          <% byebug %>
           <% if customer.image.attached? %>
               <%= image_tag customer.get_image(100,100) %>
   　       <% else %>

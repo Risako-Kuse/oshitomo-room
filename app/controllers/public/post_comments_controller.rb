@@ -9,7 +9,6 @@ class Public::PostCommentsController < ApplicationController #コメント機能
   end
 
   def destroy #destroyアクションを追加  用途：コメントを削除する
-    byebug
     PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy #自分のコメントしか消去できない
     redirect_to request.referer # 遷移元のURLにリダイレクトする
   end

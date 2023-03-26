@@ -17,7 +17,7 @@
             <% @posts.each do |post| %>
               <tr>
                 <th>
-                  <%= post.customer.name %>
+                  <%= link_to post.customer.name, admin_customer_path(post.customer.id) %>
                 </th>
                 <th>
                   <%= post.oshi_name %>
@@ -29,11 +29,7 @@
                   <%= post.post_content %>
                 </th>
                 <th>
-
-                </th>
-                  <td><%= link_to 'Destroy', admin_post_path(post.id), method: :delete,  class: 'btn btn-sm btn-danger destroy_book_58920', "data-confirm" => "本当に消しますか？"%></td>
-                <th>
-
+                  <%= link_to 'Destroy', admin_post_path(post.id), method: :delete,  class: 'btn btn-sm btn-danger destroy_book_58920', "data-confirm" => "本当に消しますか？"%>
                 </th>
               </tr>
             <% end %>
