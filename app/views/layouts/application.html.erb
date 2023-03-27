@@ -29,7 +29,7 @@
         </button>
         <div class='collapse navbar-collapse justify-content-end' id="navbarNav">
           <ul class='navbar-nav'>
-            <!--div class="nav justify-content-end"-->
+
             <!--↓会員がログインしているとき↓-->
             <% if customer_signed_in? %>
               <!--マイページボタン-->
@@ -51,12 +51,14 @@
                   <i class="fas fa-comment"></i> 募集をさがす
                 <% end %>
               </li>
+              
               <!--ダイレクトメールボタン-->
-              <li class="nav-item">
-                <%= link_to public_directmails_path, class:'nav-link fontlist' do %>
+               <!--<li class="nav-item">
+                <%#= link_to public_directmails_path, class:'nav-link fontlist' do %>
                   <i class="fas fa-envelope"></i> ダイレクトメール
-                <% end %>
-              </li>
+                <%# end %>
+              </li>-->
+              
               <!--ログアウト-->
               <li class="nav-item">
                 <%= link_to destroy_customer_session_path, method: :delete, class:'nav-link fontlist' do %>
