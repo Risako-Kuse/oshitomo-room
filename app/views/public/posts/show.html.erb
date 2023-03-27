@@ -9,7 +9,7 @@
 
        <tr>
          <td>
-           <%= link_to public_customer_path(@post.customer.id) do%>
+           <%= link_to public_customer_path(@post_show.customer.id) do%>
              <% if @customer.image.attached? %>
                <%= image_tag @customer.get_image(100,100) %>
   　          <% else %>
@@ -17,22 +17,22 @@
              <% end %>
            <%end%>
          <td>
-           <%= @post.oshi_name %>
+           <%= @post_show.oshi_name %>
           </td>
          <td>
-           <%= link_to @post.post_name, public_customer_path(@post.customer.id) %>
+           <%= link_to @post_show.post_name, public_customer_path(@post_show.customer.id) %>
          </td>
          <td>
-           <%= @post.post_content %>
+           <%= @post_show.post_content %>
          </td>
          <!--イイねの部分テンプレート-->
          <td>
-           <%= render "public/favorites/favorite", post: @post %>
+           <%= render "public/favorites/favorite", post: @post_show %>
          </td>
 
          <% if @customer.id == current_customer.id %>
-         <td><%= link_to "Edit", edit_public_post_path(@post.id), class: 'btn btn-sm btn-success edit_book_58920' %></td>
-         <td><%= link_to 'Destroy', public_post_path(@post.id), method: :delete,  class: 'btn btn-sm btn-danger destroy_book_58920', "data-confirm" => "本当に消しますか？"%></td>
+         <td><%= link_to "Edit", edit_public_post_path(@post_show.id), class: 'btn btn-sm btn-success edit_book_58920' %></td>
+         <td><%= link_to 'Destroy', public_post_path(@post_show.id), method: :delete,  class: 'btn btn-sm btn-danger destroy_book_58920', "data-confirm" => "本当に消しますか？"%></td>
          <%end%>
 
        </tr>
@@ -40,7 +40,7 @@
 
     <table>
       <tbody>
-        <% @post.post_comments.each do |post_comment| %>
+        <% @post_show.post_comments.each do |post_comment| %>
           <tr>
             <td>
               <%= link_to public_customer_path(post_comment.customer) do %>
@@ -51,7 +51,7 @@
             <td><%= post_comment.comment %></td>
             <td>
               <% if post_comment.customer == current_customer %>
-                <%= link_to "Destroy", public_post_post_comment_path(id: post_comment.id, post_id: @post.id), method: :delete, class: "btn btn-danger pull-right" %>
+                <%= link_to "Destroy", public_post_post_comment_path(id: post_comment.id, post_id: @post_show.id), method: :delete, class: "btn btn-danger pull-right" %>
               <% end %>
             </td>
            </tr>
@@ -59,14 +59,12 @@
       </tbody>
     </table>
 
-    <table>
       <div>
-        <%= form_with url: public_post_post_comments_path(@post.id) do |f| %>
+        <%= form_with url: public_post_post_comments_path(@post_show.id) do |f| %>
           <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
           <%= f.submit "送信する" %>
         <% end %>
       </div>
-     </table>
    </div>
 
  </div>

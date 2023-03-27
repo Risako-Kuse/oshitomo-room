@@ -37,13 +37,13 @@ class Public::CustomersController < ApplicationController
   # フォロー一覧
   def followings
     customer = Customer.find(params[:customer_id])
-    @followings = customer.relationships
+    @followings = customer.followings
   end
 
   # フォロワー一覧
   def followers
     customer = Customer.find(params[:customer_id])
-    @followers = customer.reverse_of_relationships
+    @followers = customer.followers
   end
 
   # 退会

@@ -20,8 +20,9 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    @customer = @post.customer
+    @post_show = Post.find(params[:id])
+    @post = Post.new
+    @customer = @post_show.customer
     @post_comment = PostComment.new
   end
 

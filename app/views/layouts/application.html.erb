@@ -32,12 +32,6 @@
             <!--div class="nav justify-content-end"-->
             <!--↓会員がログインしているとき↓-->
             <% if customer_signed_in? %>
-              <!--HOMEボタン-->
-              <li class="nav-item">
-                <%= link_to root_path, class:'nav-link fontlist' do %>
-                  <i class="fas fa-home"></i> HOME
-                <% end %>
-              </li>
               <!--マイページボタン-->
               <li class="nav-item">
                 <%= link_to public_customer_path(current_customer.id), class:'nav-link text-right fontlist' do %>

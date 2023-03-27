@@ -11,7 +11,6 @@
     <% customers.each do |customer| %>
       <tr>
         <td>
-          <% byebug %>
           <% if customer.image.attached? %>
               <%= image_tag customer.get_image(100,100) %>
   　       <% else %>
