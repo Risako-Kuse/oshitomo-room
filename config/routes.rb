@@ -10,6 +10,12 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+
+  # ゲストログイン機能
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   root :to => "public/homes#top"
   namespace :public do
     get 'customers/withdrawal_check'

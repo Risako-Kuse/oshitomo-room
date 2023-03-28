@@ -63,8 +63,10 @@
      <% else %><!--ログインユーザーだったら表示-->
 
        <!-- 会員情報編集ボタン -->
-       <%= link_to edit_public_customer_path(customer.id), class:'btn btn-outline-secondary btn-block edit_user_77129' do%>
-         会員情報編集
+       <% unless current_customer.name == 'guestuser' %>
+         <%= link_to edit_public_customer_path(customer.id), class:'btn btn-outline-secondary btn-block edit_user_77129' do%>
+           会員情報編集
+         <%end%>
        <%end%>
 
      <% end %>

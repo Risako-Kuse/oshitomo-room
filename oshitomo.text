@@ -1,0 +1,36 @@
+ルーティング確認
+rails routes
+
+<Gitコミット>
+git add .
+git commit -m "コメント"
+git push origin ブランチ名
+
+
+
+
+ES2へSSHでログイン
+ssh -i ~/.ssh/practice-aws.pem ec2-user@xx.xx.xx.xx　→XX.～のところはパブリックID
+
+ssh -i ~/.ssh/practice-aws.pem ec2-user@43.207.36.226
+
+
+【テストデプロイ後、常に最新の状況をデプロイで保つ方法】
+1. Cloud9で編集後最新の状態をGitHubにpushする。
+2. sshでCloud9からEC2にログインする。
+3. cd oshitomo-room
+4. git pull origin main
+5. bundle install --path vendor/bundle --without test development
+6. bundle exec rails assets:precompile RAILS_ENV=production
+7. bundle exec rails db:migrate RAILS_ENV=production
+8. sudo kill $(cat tmp/pids/puma.pid)
+9. rails s -e production
+10. ブラウザから、IPアドレスにアクセスして動作確認
+
+
+<< 推し友ROOM 管理者画面 >>
+/admin/sign_in
+mail: oshitomo_room@email.com
+pass: oshitomoroom
+
+<!--  -->

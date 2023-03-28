@@ -18,7 +18,8 @@ class Customer < ApplicationRecord
   # 与フォロー関係を通じて参照→自分がフォローしている人
   has_many :followings, through: :relationships, source: :reverse_of_relationships
 
-  has_one_attached :image #画像投稿機能
+  has_one_attached :image #画像投稿機能end
+
 
   # ↓ 画像投稿機能
   def get_image(width, height)
@@ -54,6 +55,22 @@ class Customer < ApplicationRecord
       Customer.where('name LIKE ?', '%' + content)
     else
       Customer.where('name LIKE ?', '%' + content + '%')
+    end
+  end
+
+  # ゲストログイン機能
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.name = "guestuser"
+    end
+  end
+
+  # ゲストログインで会員情報編集できないようにする
+  def ensure_guest_user
+    @customer = Customer.find(params[:id])
+    if @customer.name == "guestuser"
+      redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
 

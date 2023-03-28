@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :ensure_guest_customer, only: [:edit] #ゲストログインで会員情報編集できないようにする
 
   # ↓新規投稿機能
   def create
@@ -62,6 +63,13 @@ class Public::CustomersController < ApplicationController
   # ストロングパラメーター
   def customer_params
     params.require(:customer).permit(:name, :image, :address, :age, :oshi_name, :introduction)
+  end
+
+  def ensure_guest_customer
+    @customer = Customer.find(params[:id])
+    if @customer.name == "guestuser"
+      redirect_to public_customer_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
   end
 
 end

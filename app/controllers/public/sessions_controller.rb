@@ -14,7 +14,12 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
-  protected
+  # ゲストログイン機能
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    redirect_to public_customers_path, notice: 'guestuserでログインしました。'
+  end
 
   protected
 
@@ -37,6 +42,8 @@ class Public::SessionsController < Devise::SessionsController
   # 【処理内容3-2】is_deletedがfalseなら退会していないのでそのままcreateアクション(ログイン)を実行
     end
   end
+
+
 
   # GET /resource/sign_in
   # def new
