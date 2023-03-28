@@ -20,6 +20,8 @@
 
        <tbody>
        <% @posts.each do |post| %>
+       <% if post.customer.email == 'guest@example.com' %>
+       <% else %>
        <tr>
          <td>
            <%= link_to public_customer_path(post.customer.id) do %>
@@ -46,7 +48,8 @@
            <div><%= link_to post.post_comments.count.to_s + 'コメント', public_post_path(post.id) %></div>
          </td>
         </tr>
-       <%end%>
+       <% end %>
+       <% end %>
        </tbody>
 
     </table>
