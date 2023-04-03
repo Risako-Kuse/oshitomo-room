@@ -21,7 +21,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts
+    @posts = @customer.posts.where('posts.score >= ?', 0.0) #whereの後の文はスコアが０以下の場合は表示しない
     @post = Post.new
   end
 

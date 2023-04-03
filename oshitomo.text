@@ -34,3 +34,14 @@ mail: oshitomo_room@email.com
 pass: oshitomoroom
 
 <!--  -->
+
+1 git log でAuthor:Risako-Kuse <lisa419honey@gmail.com> になっているか確認。
+なってない場合↓
+
+2 git config --global user.name "Risako-Kuse"
+3 git config --global user.email lisa419honey@gmail.com
+4 git config --global  --list
+5 git add .
+6 git commit -m "コメント"
+7 git push origin ブランチ名
+8 git log で再確認。
