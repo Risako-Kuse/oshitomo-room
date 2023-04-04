@@ -34,7 +34,7 @@
            <%end%>
          </td>
          <td>
-           <%= post.oshi_name %>
+           <%= post.oshi_name %> <span class="post-score"><%= post.score %></span>
          </td>
          <td>
            <%= link_to post.post_name, public_post_path(post.id) %>
