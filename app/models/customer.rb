@@ -9,7 +9,7 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy #イイね機能
   has_many :post_comments, dependent: :destroy #コメント機能
 
-   # 自分がフォローされる（被フォロー）側の関係性
+  # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "reverse_of_relationships_id", dependent: :destroy
   # 被フォロー関係を通じて参照→自分をフォローしている人
   has_many :followers, through: :reverse_of_relationships, source: :relationships
@@ -19,6 +19,9 @@ class Customer < ApplicationRecord
   has_many :followings, through: :relationships, source: :reverse_of_relationships
 
   has_one_attached :image #画像投稿機能end
+  
+  # DM機能
+  has_many :directmail, dependent: :destroy
 
 
   # ↓ 画像投稿機能

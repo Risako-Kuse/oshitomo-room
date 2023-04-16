@@ -1,4 +1,5 @@
-class Public::DirectmailsController < ApplicationController
+class Public::DirectmailController < ApplicationController
+
   def new
   end
 
@@ -10,4 +11,5 @@ class Public::DirectmailsController < ApplicationController
 
   def create
   end
+
 end

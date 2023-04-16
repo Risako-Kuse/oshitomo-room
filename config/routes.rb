@@ -30,6 +30,9 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
        resource :favorites, only: [:create, :destroy] #イイね機能
     end
+    
+    # DM機能
+    resources :directmail, only: [:new, :create]
 
     # フォロー機能 ネストさせる
     resources :customers do
