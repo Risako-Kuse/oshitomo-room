@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_customer!, except: [:show, :index]
 
   # ↓新規投稿機能
   def create
@@ -34,6 +35,10 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if @post.customer.id == current_customer.id
+    else
+     redirect_to public_post_path(@post.id)
+    end
   end
 
   def update
@@ -47,9 +52,13 @@ class Public::PostsController < ApplicationController
 
 
   def destroy
-    post = Post.find(params[:id])  # データ（レコード）を1件取得
-    post.destroy  # データ（レコード）を削除
-    redirect_to public_posts_path
+    @post = Post.find(params[:id])
+    if @post.customer.id == current_customer.id
+     @post.destroy  # データ（レコード）を削除
+     redirect_to public_posts_path
+    else
+     redirect_to public_post_path(@post.id)
+    end
   end
 
 
