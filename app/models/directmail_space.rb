@@ -1,6 +1,6 @@
 class DirectmailSpace < ApplicationRecord
 
-  # DM機能
-  has_many :directmail, dependent: :destroy
+  has_many :user_rooms
+  has_many :chats
   
 end
